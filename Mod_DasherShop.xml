@@ -66,6 +66,17 @@
 <else>
 <condition id="isUpgradeEnabled">
 <string id="condition" values="yesno">no</string>
+<string id="upgrade name">DASHERSHOTMORE</string>
+<normal><condition id="canPayUpgrade">
+<string id="upgrade name">DASHERSHOTMORE</string>
+<normal><action id="buyUpgrade">
+<string id="upgrade name">DASHERSHOTMORE</string>
+</action></normal>
+</condition>
+</normal>
+<else>
+<condition id="isUpgradeEnabled">
+<string id="condition" values="yesno">no</string>
 <string id="upgrade name">DASHERWHIRLWINDSPEED1</string>
 <normal><condition id="canPayUpgrade">
 <string id="upgrade name">DASHERWHIRLWINDSPEED1</string>
@@ -203,17 +214,6 @@
 <string id="upgrade name">healthRegen2</string>
 <normal><action id="buyUpgrade">
 <string id="upgrade name">healthRegen2</string>
-</action></normal>
-</condition>
-</normal>
-<else>
-<condition id="isUpgradeEnabled">
-<string id="condition" values="yesno">no</string>
-<string id="upgrade name">DASHERSHOTMORE</string>
-<normal><condition id="canPayUpgrade">
-<string id="upgrade name">DASHERSHOTMORE</string>
-<normal><action id="buyUpgrade">
-<string id="upgrade name">DASHERSHOTMORE</string>
 </action></normal>
 </condition>
 </normal>
