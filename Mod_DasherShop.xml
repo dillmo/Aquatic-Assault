@@ -11,6 +11,17 @@
 <else>
 <condition id="isUpgradeEnabled">
 <string id="condition" values="yesno">no</string>
+<string id="upgrade name">WHIRLWIND</string>
+<normal><condition id="canPayUpgrade">
+<string id="upgrade name">WHIRLWIND</string>
+<normal><action id="buyUpgrade">
+<string id="upgrade name">WHIRLWIND</string>
+</action></normal>
+</condition>
+</normal>
+<else>
+<condition id="isUpgradeEnabled">
+<string id="condition" values="yesno">no</string>
 <string id="upgrade name">DasherShotBurstNext</string>
 <normal><condition id="canPayUpgrade">
 <string id="upgrade name">DasherShotBurstNext</string>
@@ -38,17 +49,6 @@
 <string id="upgrade name">DasherDashGroundpound2</string>
 <normal><action id="buyUpgrade">
 <string id="upgrade name">DasherDashGroundpound2</string>
-</action></normal>
-</condition>
-</normal>
-<else>
-<condition id="isUpgradeEnabled">
-<string id="condition" values="yesno">no</string>
-<string id="upgrade name">WHIRLWIND</string>
-<normal><condition id="canPayUpgrade">
-<string id="upgrade name">WHIRLWIND</string>
-<normal><action id="buyUpgrade">
-<string id="upgrade name">WHIRLWIND</string>
 </action></normal>
 </condition>
 </normal>
