@@ -503,7 +503,7 @@
                                                 </condition>
                                                 <condition id="isTurretInArea">
                                                     <string id="teams" values="teams" multiselect="true">OWN_TEAM;;</string>
-                                                    <string id="health comparison" values="valuecompare">less</string>
+                                                    <string id="health comparison" values="valuecompare">greater or equal</string>
                                                     <float id="health">0.00</float>
                                                     <float id="xOffset">0.00</float>
                                                     <float id="yOffset">0.00</float>
