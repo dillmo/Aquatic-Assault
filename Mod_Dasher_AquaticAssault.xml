@@ -494,6 +494,17 @@
                                                         </condition>
                                                     </or>
                                                 </andblock>
+                                                <condition id="isOnGround">
+                                                    <string id="condition" values="yesno">yes</string>
+                                                    <string id="check on" values="targetself">self</string>
+                                                    <string id="Comment">Jump up and down to avoid droid damage</string>
+                                                    <normal>
+                                                        <action id="setBool">
+                                                            <string id="id">jump</string>
+                                                            <string id="value" values="flagtoggle">yes</string>
+                                                        </action>
+                                                    </normal>
+                                                </condition>
                                             </normal>
                                             <or>
                                                 <condition id="checkCounter">
