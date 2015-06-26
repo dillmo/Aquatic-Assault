@@ -264,158 +264,218 @@
                             <string id="Comment">Chasing skills</string>
                             <normal>
                                 <andblock>
-                                    <string id="Comment">Dash</string>
-                                    <normal>
-                                        <condition id="isTargetInArea">
-                                            <string id="condition" values="yesno">yes</string>
-                                            <float id="xOffset">0.00</float>
-                                            <float id="yOffset">0.00</float>
-                                            <float id="width">0.50</float>
-                                            <float id="height">0.50</float>
-                                            <string id="check line of sight" values="yesno">yes</string>
-                                            <string id="ignore invisibility" values="yesno">yes</string>
-                                            <string id="Comment">Shorter range for triangle dash</string>
+                                    <string id="Comment">Do NOT attack Sentry while he charges</string>
+                                    <else>
+                                        <andblock>
+                                            <string id="Comment">Dash</string>
                                             <normal>
-                                                <andblock>
-                                                    <string id="Comment">Triangle dash if possible</string>
+                                                <condition id="isTargetInArea">
+                                                    <string id="condition" values="yesno">yes</string>
+                                                    <float id="xOffset">0.00</float>
+                                                    <float id="yOffset">0.00</float>
+                                                    <float id="width">0.50</float>
+                                                    <float id="height">0.50</float>
+                                                    <string id="check line of sight" values="yesno">yes</string>
+                                                    <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="Comment">Shorter range for triangle dash</string>
                                                     <normal>
-                                                        <action id="setBool">
-                                                            <string id="id">jump</string>
-                                                            <string id="value" values="flagtoggle">yes</string>
-                                                        </action>
+                                                        <andblock>
+                                                            <string id="Comment">Triangle dash if possible</string>
+                                                            <normal>
+                                                                <action id="setBool">
+                                                                    <string id="id">jump</string>
+                                                                    <string id="value" values="flagtoggle">yes</string>
+                                                                </action>
+                                                            </normal>
+                                                            <else>
+                                                                <action id="aimStickAtTarget">
+                                                                    <float id="duration seconds">0.10</float>
+                                                                    <string id="only aim when needed" values="yesno">no</string>
+                                                                    <string id="use rotation speed limits" values="yesno">no</string>
+                                                                    <float id="min rotation speed per second in degrees">0.00</float>
+                                                                    <float id="max rotation speed per second in degrees">0.00</float>
+                                                                    <float id="use min rotation speed when angle to target under">0.00</float>
+                                                                    <float id="use max rotation speed when angle to target over">0.00</float>
+                                                                </action>
+                                                                <action id="pressButton">
+                                                                    <string id="button" values="buttons">FACE_RIGHT</string>
+                                                                    <float id="duration in seconds">0.10</float>
+                                                                </action>
+                                                            </else>
+                                                            <or>
+                                                                <condition id="isOnGround">
+                                                                    <string id="condition" values="yesno">yes</string>
+                                                                    <string id="check on" values="targetself">self</string>
+                                                                </condition>
+                                                                <condition id="isOnGround">
+                                                                    <string id="condition" values="yesno">yes</string>
+                                                                    <string id="check on" values="targetself">target</string>
+                                                                </condition>
+                                                            </or>
+                                                        </andblock>
                                                     </normal>
                                                     <else>
-                                                        <action id="aimStickAtTarget">
-                                                            <float id="duration seconds">0.10</float>
-                                                            <string id="only aim when needed" values="yesno">no</string>
-                                                            <string id="use rotation speed limits" values="yesno">no</string>
-                                                            <float id="min rotation speed per second in degrees">0.00</float>
-                                                            <float id="max rotation speed per second in degrees">0.00</float>
-                                                            <float id="use min rotation speed when angle to target under">0.00</float>
-                                                            <float id="use max rotation speed when angle to target over">0.00</float>
-                                                        </action>
-                                                        <action id="pressButton">
-                                                            <string id="button" values="buttons">FACE_RIGHT</string>
-                                                            <float id="duration in seconds">0.10</float>
-                                                        </action>
+                                                        <andblock>
+                                                            <string id="Comment">Use longer range when dashing to kill</string>
+                                                            <normal>
+                                                                <action id="aimStickAtTarget">
+                                                                    <float id="duration seconds">0.10</float>
+                                                                    <string id="only aim when needed" values="yesno">no</string>
+                                                                    <string id="use rotation speed limits" values="yesno">no</string>
+                                                                    <float id="min rotation speed per second in degrees">0.00</float>
+                                                                    <float id="max rotation speed per second in degrees">0.00</float>
+                                                                    <float id="use min rotation speed when angle to target under">0.00</float>
+                                                                    <float id="use max rotation speed when angle to target over">0.00</float>
+                                                                </action>
+                                                                <action id="pressButton">
+                                                                    <string id="button" values="buttons">FACE_RIGHT</string>
+                                                                    <float id="duration in seconds">0.10</float>
+                                                                </action>
+                                                            </normal>
+                                                            <or>
+                                                                <condition id="isTargetInArea">
+                                                                    <string id="condition" values="yesno">yes</string>
+                                                                    <float id="xOffset">0.00</float>
+                                                                    <float id="yOffset">0.00</float>
+                                                                    <float id="width">0.80</float>
+                                                                    <float id="height">0.80</float>
+                                                                    <string id="check line of sight" values="yesno">yes</string>
+                                                                    <string id="ignore invisibility" values="yesno">yes</string>
+                                                                </condition>
+                                                                <condition id="checkCharacterValue">
+                                                                    <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
+                                                                    <float id="value">50.00</float>
+                                                                    <string id="compare method" values="valuecompare">less</string>
+                                                                    <string id="check on" values="targetself">target</string>
+                                                                </condition>
+                                                            </or>
+                                                        </andblock>
+                                                    </else>
+                                                </condition>
+                                            </normal>
+                                            <or>
+                                                <condition id="isSkillOnButtonAvailable">
+                                                    <string id="button" values="buttons">FACE_RIGHT</string>
+                                                </condition>
+                                                <condition id="getBoolEquals">
+                                                    <string id="id">CanUseSkills</string>
+                                                    <string id="value" values="yesno">yes</string>
+                                                </condition>
+                                                <condition id="isFromTeam">
+                                                    <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                    <string id="check on" values="targetself">target</string>
+                                                </condition>
+                                            </or>
+                                        </andblock>
+                                        <andblock>
+                                            <string id="Comment">&apos;Nado</string>
+                                            <normal>
+                                                <action id="pressButton">
+                                                    <string id="button" values="buttons">FACE_TOP</string>
+                                                    <float id="duration in seconds">0.10</float>
+                                                </action>
+                                            </normal>
+                                            <or>
+                                                <condition id="isSkillOnButtonAvailable">
+                                                    <string id="button" values="buttons">FACE_TOP</string>
+                                                </condition>
+                                                <condition id="isTargetInArea">
+                                                    <string id="condition" values="yesno">yes</string>
+                                                    <float id="xOffset">0.00</float>
+                                                    <float id="yOffset">0.00</float>
+                                                    <float id="width">0.30</float>
+                                                    <float id="height">0.30</float>
+                                                    <string id="check line of sight" values="yesno">yes</string>
+                                                    <string id="ignore invisibility" values="yesno">yes</string>
+                                                </condition>
+                                                <condition id="getBoolEquals">
+                                                    <string id="id">CanUseSkills</string>
+                                                    <string id="value" values="yesno">yes</string>
+                                                </condition>
+                                                <condition id="isFromTeam">
+                                                    <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                    <string id="check on" values="targetself">target</string>
+                                                </condition>
+                                            </or>
+                                        </andblock>
+                                        <andblock>
+                                            <string id="Comment">Fish Gun</string>
+                                            <normal>
+                                                <andblock>
+                                                    <string id="Comment">Don&apos;t ruin stealth burst</string>
+                                                    <else>
+                                                        <andblock>
+                                                            <string id="Comment">Don&apos;t attack Froggy if he has RBAY</string>
+                                                            <else>
+                                                                <action id="aimStickAtTarget">
+                                                                    <float id="duration seconds">0.10</float>
+                                                                    <string id="only aim when needed" values="yesno">no</string>
+                                                                    <string id="use rotation speed limits" values="yesno">no</string>
+                                                                    <float id="min rotation speed per second in degrees">0.00</float>
+                                                                    <float id="max rotation speed per second in degrees">0.00</float>
+                                                                    <float id="use min rotation speed when angle to target under">0.00</float>
+                                                                    <float id="use max rotation speed when angle to target over">0.00</float>
+                                                                </action>
+                                                                <action id="pressButton">
+                                                                    <string id="button" values="buttons">FACE_LEFT</string>
+                                                                    <float id="duration in seconds">0.10</float>
+                                                                </action>
+                                                            </else>
+                                                            <or>
+                                                                <condition id="checkClass">
+                                                                    <string id="check on" values="targetself">target</string>
+                                                                    <string id="class">Dasher</string>
+                                                                </condition>
+                                                                <condition id="hasUpgrade">
+                                                                    <string id="class">Dasher</string>
+                                                                    <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                                    <string id="upgrade name">DasherWhirlwindReflect</string>
+                                                                </condition>
+                                                                <condition id="hasUpgrade">
+                                                                    <string id="class">Dasher</string>
+                                                                    <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                                    <string id="upgrade name">whirlPenalty</string>
+                                                                </condition>
+                                                            </or>
+                                                        </andblock>
                                                     </else>
                                                     <or>
-                                                        <condition id="isOnGround">
+                                                        <condition id="checkCharacterFlag">
+                                                            <string id="property" values="characterflags">IsStealth</string>
                                                             <string id="condition" values="yesno">yes</string>
                                                             <string id="check on" values="targetself">self</string>
                                                         </condition>
-                                                        <condition id="isOnGround">
+                                                        <condition id="isTargetType">
                                                             <string id="condition" values="yesno">yes</string>
-                                                            <string id="check on" values="targetself">target</string>
+                                                            <string id="target groups" values="target groups" multiselect="true">PLAYERS;;</string>
                                                         </condition>
                                                     </or>
                                                 </andblock>
                                             </normal>
-                                            <else>
-                                                <andblock>
-                                                    <string id="Comment">Use longer range when dashing to kill</string>
-                                                    <normal>
-                                                        <action id="aimStickAtTarget">
-                                                            <float id="duration seconds">0.10</float>
-                                                            <string id="only aim when needed" values="yesno">no</string>
-                                                            <string id="use rotation speed limits" values="yesno">no</string>
-                                                            <float id="min rotation speed per second in degrees">0.00</float>
-                                                            <float id="max rotation speed per second in degrees">0.00</float>
-                                                            <float id="use min rotation speed when angle to target under">0.00</float>
-                                                            <float id="use max rotation speed when angle to target over">0.00</float>
-                                                        </action>
-                                                        <action id="pressButton">
-                                                            <string id="button" values="buttons">FACE_RIGHT</string>
-                                                            <float id="duration in seconds">0.10</float>
-                                                        </action>
-                                                    </normal>
-                                                    <or>
-                                                        <condition id="isTargetInArea">
-                                                            <string id="condition" values="yesno">yes</string>
-                                                            <float id="xOffset">0.00</float>
-                                                            <float id="yOffset">0.00</float>
-                                                            <float id="width">0.80</float>
-                                                            <float id="height">0.80</float>
-                                                            <string id="check line of sight" values="yesno">yes</string>
-                                                            <string id="ignore invisibility" values="yesno">yes</string>
-                                                        </condition>
-                                                        <condition id="checkCharacterValue">
-                                                            <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
-                                                            <float id="value">50.00</float>
-                                                            <string id="compare method" values="valuecompare">less</string>
-                                                            <string id="check on" values="targetself">target</string>
-                                                        </condition>
-                                                    </or>
-                                                </andblock>
-                                            </else>
-                                        </condition>
-                                    </normal>
+                                            <or>
+                                                <condition id="isSkillOnButtonAvailable">
+                                                    <string id="button" values="buttons">FACE_LEFT</string>
+                                                </condition>
+                                                <condition id="isTargetInArea">
+                                                    <string id="condition" values="yesno">yes</string>
+                                                    <float id="xOffset">0.00</float>
+                                                    <float id="yOffset">0.00</float>
+                                                    <float id="width">0.48</float>
+                                                    <float id="height">0.48</float>
+                                                    <string id="check line of sight" values="yesno">yes</string>
+                                                    <string id="ignore invisibility" values="yesno">yes</string>
+                                                </condition>
+                                            </or>
+                                        </andblock>
+                                    </else>
                                     <or>
-                                        <condition id="isSkillOnButtonAvailable">
-                                            <string id="button" values="buttons">FACE_RIGHT</string>
-                                        </condition>
                                         <condition id="getBoolEquals">
-                                            <string id="id">CanUseSkills</string>
+                                            <string id="id">RetreatingFromNauts</string>
                                             <string id="value" values="yesno">yes</string>
                                         </condition>
-                                    </or>
-                                </andblock>
-                                <andblock>
-                                    <string id="Comment">&apos;Nado</string>
-                                    <normal>
-                                        <action id="pressButton">
-                                            <string id="button" values="buttons">FACE_TOP</string>
-                                            <float id="duration in seconds">0.10</float>
-                                        </action>
-                                    </normal>
-                                    <or>
-                                        <condition id="isSkillOnButtonAvailable">
-                                            <string id="button" values="buttons">FACE_TOP</string>
-                                        </condition>
-                                        <condition id="isTargetInArea">
-                                            <string id="condition" values="yesno">yes</string>
-                                            <float id="xOffset">0.00</float>
-                                            <float id="yOffset">0.00</float>
-                                            <float id="width">0.30</float>
-                                            <float id="height">0.30</float>
-                                            <string id="check line of sight" values="yesno">yes</string>
-                                            <string id="ignore invisibility" values="yesno">yes</string>
-                                        </condition>
-                                        <condition id="getBoolEquals">
-                                            <string id="id">CanUseSkills</string>
-                                            <string id="value" values="yesno">yes</string>
-                                        </condition>
-                                    </or>
-                                </andblock>
-                                <andblock>
-                                    <string id="Comment">Fish Gun</string>
-                                    <normal>
-                                        <action id="aimStickAtTarget">
-                                            <float id="duration seconds">0.10</float>
-                                            <string id="only aim when needed" values="yesno">no</string>
-                                            <string id="use rotation speed limits" values="yesno">no</string>
-                                            <float id="min rotation speed per second in degrees">0.00</float>
-                                            <float id="max rotation speed per second in degrees">0.00</float>
-                                            <float id="use min rotation speed when angle to target under">0.00</float>
-                                            <float id="use max rotation speed when angle to target over">0.00</float>
-                                        </action>
-                                        <action id="pressButton">
-                                            <string id="button" values="buttons">FACE_LEFT</string>
-                                            <float id="duration in seconds">0.10</float>
-                                        </action>
-                                    </normal>
-                                    <or>
-                                        <condition id="isSkillOnButtonAvailable">
-                                            <string id="button" values="buttons">FACE_LEFT</string>
-                                        </condition>
-                                        <condition id="isTargetInArea">
-                                            <string id="condition" values="yesno">yes</string>
-                                            <float id="xOffset">0.00</float>
-                                            <float id="yOffset">0.00</float>
-                                            <float id="width">0.48</float>
-                                            <float id="height">0.48</float>
-                                            <string id="check line of sight" values="yesno">yes</string>
-                                            <string id="ignore invisibility" values="yesno">yes</string>
+                                        <condition id="checkClass">
+                                            <string id="check on" values="targetself">target</string>
+                                            <string id="class">Spy</string>
                                         </condition>
                                     </or>
                                 </andblock>
@@ -485,19 +545,55 @@
                                                 <andblock>
                                                     <string id="Comment">Fish Gun</string>
                                                     <normal>
-                                                        <action id="aimStickAtTarget">
-                                                            <float id="duration seconds">0.10</float>
-                                                            <string id="only aim when needed" values="yesno">no</string>
-                                                            <string id="use rotation speed limits" values="yesno">no</string>
-                                                            <float id="min rotation speed per second in degrees">0.00</float>
-                                                            <float id="max rotation speed per second in degrees">0.00</float>
-                                                            <float id="use min rotation speed when angle to target under">0.00</float>
-                                                            <float id="use max rotation speed when angle to target over">0.00</float>
-                                                        </action>
-                                                        <action id="pressButton">
-                                                            <string id="button" values="buttons">FACE_LEFT</string>
-                                                            <float id="duration in seconds">0.10</float>
-                                                        </action>
+                                                        <andblock>
+                                                            <string id="Comment">Do NOT attack Sentry while he charges</string>
+                                                            <else>
+                                                                <andblock>
+                                                                    <string id="Comment">Don&apos;t attack Froggy if he has RBAY</string>
+                                                                    <else>
+                                                                        <action id="aimStickAtTarget">
+                                                                            <float id="duration seconds">0.10</float>
+                                                                            <string id="only aim when needed" values="yesno">no</string>
+                                                                            <string id="use rotation speed limits" values="yesno">no</string>
+                                                                            <float id="min rotation speed per second in degrees">0.00</float>
+                                                                            <float id="max rotation speed per second in degrees">0.00</float>
+                                                                            <float id="use min rotation speed when angle to target under">0.00</float>
+                                                                            <float id="use max rotation speed when angle to target over">0.00</float>
+                                                                        </action>
+                                                                        <action id="pressButton">
+                                                                            <string id="button" values="buttons">FACE_LEFT</string>
+                                                                            <float id="duration in seconds">0.10</float>
+                                                                        </action>
+                                                                    </else>
+                                                                    <or>
+                                                                        <condition id="checkClass">
+                                                                            <string id="check on" values="targetself">target</string>
+                                                                            <string id="class">Dasher</string>
+                                                                        </condition>
+                                                                        <condition id="hasUpgrade">
+                                                                            <string id="class">Dasher</string>
+                                                                            <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                                            <string id="upgrade name">DasherWhirlwindReflect</string>
+                                                                        </condition>
+                                                                        <condition id="hasUpgrade">
+                                                                            <string id="class">Dasher</string>
+                                                                            <string id="team" values="teamswithnumbers">ENEMY_TEAM</string>
+                                                                            <string id="upgrade name">whirlPenalty</string>
+                                                                        </condition>
+                                                                    </or>
+                                                                </andblock>
+                                                            </else>
+                                                            <or>
+                                                                <condition id="getBoolEquals">
+                                                                    <string id="id">RetreatingFromNauts</string>
+                                                                    <string id="value" values="yesno">yes</string>
+                                                                </condition>
+                                                                <condition id="checkClass">
+                                                                    <string id="check on" values="targetself">target</string>
+                                                                    <string id="class">Spy</string>
+                                                                </condition>
+                                                            </or>
+                                                        </andblock>
                                                     </normal>
                                                     <or>
                                                         <condition id="isSkillOnButtonAvailable">
@@ -530,32 +626,44 @@
                                                 <andblock>
                                                     <string id="Comment">Fish Gun in other states</string>
                                                     <normal>
-                                                        <action id="aimStickAtTarget">
-                                                            <float id="duration seconds">0.10</float>
-                                                            <string id="only aim when needed" values="yesno">no</string>
-                                                            <string id="use rotation speed limits" values="yesno">no</string>
-                                                            <float id="min rotation speed per second in degrees">0.00</float>
-                                                            <float id="max rotation speed per second in degrees">0.00</float>
-                                                            <float id="use min rotation speed when angle to target under">0.00</float>
-                                                            <float id="use max rotation speed when angle to target over">0.00</float>
-                                                        </action>
-                                                        <action id="pressButton">
-                                                            <string id="button" values="buttons">FACE_LEFT</string>
-                                                            <float id="duration in seconds">0.10</float>
-                                                        </action>
+                                                        <andblock>
+                                                            <string id="Comment">Don&apos;t ruin stealth burst</string>
+                                                            <else>
+                                                                <action id="pressButton">
+                                                                    <string id="button" values="buttons">FACE_LEFT</string>
+                                                                    <float id="duration in seconds">0.10</float>
+                                                                </action>
+                                                            </else>
+                                                            <or>
+                                                                <condition id="checkCharacterFlag">
+                                                                    <string id="property" values="characterflags">IsStealth</string>
+                                                                    <string id="condition" values="yesno">yes</string>
+                                                                    <string id="check on" values="targetself">self</string>
+                                                                </condition>
+                                                                <condition id="isTargetType">
+                                                                    <string id="condition" values="yesno">yes</string>
+                                                                    <string id="target groups" values="target groups" multiselect="true">PLAYERS;;</string>
+                                                                </condition>
+                                                            </or>
+                                                        </andblock>
                                                     </normal>
                                                     <or>
-                                                        <condition id="isSkillOnButtonAvailable">
-                                                            <string id="button" values="buttons">FACE_LEFT</string>
-                                                        </condition>
-                                                        <condition id="isTargetInArea">
+                                                        <condition id="isInArea">
                                                             <string id="condition" values="yesno">yes</string>
-                                                            <float id="xOffset">0.00</float>
+                                                            <string id="collision groups" values="collison groups" multiselect="true">PLAYERS;;</string>
+                                                            <string id="check green obstacles only" values="yesno">no</string>
+                                                            <string id="count characters out of combat" values="yesno">yes</string>
+                                                            <string id="teams" values="teams" multiselect="true">ENEMY_TEAM;;</string>
+                                                            <string id="areaName"></string>
+                                                            <float id="xOffset">0.12</float>
                                                             <float id="yOffset">0.00</float>
-                                                            <float id="width">0.48</float>
+                                                            <float id="width">0.24</float>
                                                             <float id="height">0.48</float>
                                                             <string id="check line of sight" values="yesno">yes</string>
-                                                            <string id="ignore invisibility" values="yesno">yes</string>
+                                                            <string id="ignore invisibility" values="yesno">no</string>
+                                                        </condition>
+                                                        <condition id="isSkillOnButtonAvailable">
+                                                            <string id="button" values="buttons">FACE_LEFT</string>
                                                         </condition>
                                                         <condition id="checkCharacterFlag">
                                                             <string id="property" values="characterflags">IsStealth</string>
@@ -689,6 +797,49 @@
                         </condition>
                     </or>
                 </andblock>
+                <condition id="checkCharacterValue">
+                    <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
+                    <float id="value">50.00</float>
+                    <string id="compare method" values="valuecompare">greater</string>
+                    <string id="check on" values="targetself">target</string>
+                    <string id="Comment">Keep my distance when my target is not unhealthy</string>
+                    <normal>
+                        <condition id="isTargetInArea">
+                            <string id="condition" values="yesno">yes</string>
+                            <float id="xOffset">0.00</float>
+                            <float id="yOffset">0.00</float>
+                            <float id="width">0.48</float>
+                            <float id="height">0.48</float>
+                            <string id="check line of sight" values="yesno">yes</string>
+                            <string id="ignore invisibility" values="yesno">no</string>
+                            <normal>
+                                <action id="setBool">
+                                    <string id="id">moveTowardsTarget</string>
+                                    <string id="value" values="flagtoggle">no</string>
+                                </action>
+                                <condition id="isTargetInArea">
+                                    <string id="condition" values="yesno">yes</string>
+                                    <float id="xOffset">0.00</float>
+                                    <float id="yOffset">0.00</float>
+                                    <float id="width">0.08</float>
+                                    <float id="height">0.08</float>
+                                    <string id="check line of sight" values="yesno">yes</string>
+                                    <string id="ignore invisibility" values="yesno">no</string>
+                                    <normal>
+                                        <action id="setBool">
+                                            <string id="id">moveAwayFromTarget</string>
+                                            <string id="value" values="flagtoggle">yes</string>
+                                        </action>
+                                        <action id="setBool">
+                                            <string id="id">retreatingFromNauts</string>
+                                            <string id="value" values="flagtoggle">yes</string>
+                                        </action>
+                                    </normal>
+                                </condition>
+                            </normal>
+                        </condition>
+                    </normal>
+                </condition>
                 <condition id="getBoolEquals">
                     <string id="id">MoveAwayFromTarget</string>
                     <string id="value" values="yesno">yes</string>
