@@ -616,6 +616,10 @@
                         </action>
                     </normal>
                 </condition>
+                <action id="executeBehaviourTree">
+                    <string id="fileName">Mod_AwesomebotsCommonLib</string>
+                    <string id="Minimized">yes</string>
+                </action>
                 <andblock>
                     <string id="Comment">Heal from healbots</string>
                     <normal>
