@@ -27,6 +27,7 @@
                 </action>
                 <orblock>
                     <string id="Comment">Dash to escape</string>
+                    <string id="Minimized">yes</string>
                     <normal>
                         <condition id="getBoolEquals">
                             <string id="id">CanUseSkills</string>
@@ -724,12 +725,45 @@
                         </action>
                     </normal>
                 </condition>
+                <condition id="isInNamedArea">
+                    <string id="area name">HealArea</string>
+                    <string id="team" values="ownenemy">OWN_TEAM</string>
+                    <string id="who" values="targetself">self</string>
+                    <string id="Comment">Remain in shop for 2 seconds</string>
+                    <string id="Minimized">yes</string>
+                    <normal>
+                        <condition id="checkCounter">
+                            <string id="id">shopCounter</string>
+                            <string id="value">20</string>
+                            <string id="compare method" values="valuecompare">less</string>
+                            <normal>
+                                <action id="setBool">
+                                    <string id="id">DontMove</string>
+                                    <string id="value" values="flagtoggle">yes</string>
+                                </action>
+                            </normal>
+                        </condition>
+                        <action id="adjustCounter">
+                            <string id="id">shopCounter</string>
+                            <string id="value">1</string>
+                            <string id="adjust method" values="valueadjust">add</string>
+                        </action>
+                    </normal>
+                    <else>
+                        <action id="adjustCounter">
+                            <string id="id">shopCounter</string>
+                            <string id="value">0</string>
+                            <string id="adjust method" values="valueadjust">set</string>
+                        </action>
+                    </else>
+                </condition>
                 <action id="executeBehaviourTree">
                     <string id="fileName">Mod_AwesomebotsCommonLib</string>
                     <string id="Minimized">yes</string>
                 </action>
                 <andblock>
                     <string id="Comment">Heal from healbots</string>
+                    <string id="Minimized">yes</string>
                     <normal>
                         <action id="selectTarget">
                             <string id="groups to select" values="target groups" multiselect="true">CREEPS;;</string>
@@ -803,6 +837,7 @@
                     <string id="compare method" values="valuecompare">greater</string>
                     <string id="check on" values="targetself">target</string>
                     <string id="Comment">Keep my distance when my target is not unhealthy</string>
+                    <string id="Minimized">yes</string>
                     <normal>
                         <condition id="isTargetInArea">
                             <string id="condition" values="yesno">yes</string>
@@ -844,6 +879,7 @@
                     <string id="id">MoveAwayFromTarget</string>
                     <string id="value" values="yesno">yes</string>
                     <string id="Comment">Move Away From Target</string>
+                    <string id="Minimized">yes</string>
                     <normal>
                         <action id="setBool">
                             <string id="id">ForceWaypointMovement</string>
@@ -1065,6 +1101,7 @@
                     <string id="id">CantMove</string>
                     <string id="value" values="yesno">no</string>
                     <string id="Comment">Handle Movement</string>
+                    <string id="Minimized">yes</string>
                     <normal>
                         <condition id="getBoolEquals">
                             <string id="id">GoDown</string>
