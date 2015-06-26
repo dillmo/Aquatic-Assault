@@ -831,12 +831,8 @@
                         </condition>
                     </or>
                 </andblock>
-                <condition id="checkCharacterValue">
-                    <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
-                    <float id="value">50.00</float>
-                    <string id="compare method" values="valuecompare">greater</string>
-                    <string id="check on" values="targetself">target</string>
-                    <string id="Comment">Keep my distance when my target is not unhealthy</string>
+                <andblock>
+                    <string id="Comment">Keep my distance when my target is not unhealthy and I am not in Tornado</string>
                     <string id="Minimized">yes</string>
                     <normal>
                         <condition id="isTargetInArea">
@@ -874,7 +870,19 @@
                             </normal>
                         </condition>
                     </normal>
-                </condition>
+                    <or>
+                        <condition id="checkCharacterValue">
+                            <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
+                            <float id="value">50.00</float>
+                            <string id="compare method" values="valuecompare">greater</string>
+                            <string id="check on" values="targetself">target</string>
+                        </condition>
+                        <condition id="isUpgradeEnabled">
+                            <string id="condition" values="yesno">yes</string>
+                            <string id="upgrade name">whirlPenalty</string>
+                        </condition>
+                    </or>
+                </andblock>
                 <condition id="getBoolEquals">
                     <string id="id">MoveAwayFromTarget</string>
                     <string id="value" values="yesno">yes</string>
