@@ -27,7 +27,6 @@
                 </action>
                 <orblock>
                     <string id="Comment">Dash to escape</string>
-                    <string id="Minimized">yes</string>
                     <normal>
                         <condition id="getBoolEquals">
                             <string id="id">CanUseSkills</string>
@@ -62,6 +61,10 @@
                                                         <andblock>
                                                             <string id="Comment">Don&apos;t dash in the wrong direction</string>
                                                             <normal>
+                                                                <action id="setBool">
+                                                                    <string id="id">DontMove</string>
+                                                                    <string id="value" values="flagtoggle">yes</string>
+                                                                </action>
                                                                 <action id="pressButton">
                                                                     <string id="button" values="buttons">FACE_RIGHT</string>
                                                                     <float id="duration in seconds">0.00</float>
@@ -82,6 +85,10 @@
                                                         <andblock>
                                                             <string id="Comment">Don&apos;t dash in the wrong direction</string>
                                                             <normal>
+                                                                <action id="setBool">
+                                                                    <string id="id">DontMove</string>
+                                                                    <string id="value" values="flagtoggle">yes</string>
+                                                                </action>
                                                                 <action id="pressButton">
                                                                     <string id="button" values="buttons">FACE_RIGHT</string>
                                                                     <float id="duration in seconds">0.00</float>
