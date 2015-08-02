@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<enemy>
+    <behaviour>
+        <root x="110" y="40">
+            <normal>
+                <action id="executeBehaviourTree">
+                    <string id="fileName">Mod_Dasher</string>
+                    <string id="Comment">Hero logic</string>
+                    <string id="Minimized">yes</string>
+                </action>
+                <condition id="once">
+                    <normal>
+                        <action id="adjustCounter">
+                            <string id="id">setState</string>
+                            <string id="value">1</string>
+                            <string id="adjust method" values="valueadjust">set</string>
+                        </action>
+                    </normal>
+                </condition>
+                <condition id="checkCounter">
+                    <string id="id">state</string>
+                    <string id="value">0</string>
+                    <string id="compare method" values="valuecompare">greater</string>
+                    <string id="Comment">Handle states</string>
+                    <normal>
+                        <condition id="checkCounter">
+                            <string id="id">state</string>
+                            <string id="value">1</string>
+                            <string id="compare method" values="valuecompare">equal</string>
+                            <string id="Comment">Go to shop (1)</string>
+                            <normal>
+                                <action id="executeBehaviourTree">
+                                    <string id="fileName">Mod_AquaticAssault_GoToShop</string>
+                                    <string id="Minimized">yes</string>
+                                </action>
+                            </normal>
+                        </condition>
+                    </normal>
+                </condition>
+                <condition id="checkCounter">
+                    <string id="id">setState</string>
+                    <string id="value">0</string>
+                    <string id="compare method" values="valuecompare">greater</string>
+                    <string id="Comment">Process requests to set the state</string>
+                    <normal>
+                        <condition id="checkCounter">
+                            <string id="id">setState</string>
+                            <string id="value">1</string>
+                            <string id="compare method" values="valuecompare">equal</string>
+                            <string id="Comment">Go to shop (1)</string>
+                            <normal>
+                                <action id="adjustCounter">
+                                    <string id="id">state</string>
+                                    <string id="value">1</string>
+                                    <string id="adjust method" values="valueadjust">set</string>
+                                </action>
+                                <action id="log">
+                                    <string id="text">Set the state to &quot;Go to shop&quot; (1)</string>
+                                    <string id="counter"></string>
+                                    <string id="bool"></string>
+                                </action>
+                            </normal>
+                        </condition>
+                    </normal>
+                </condition>
+                <action id="executeBehaviourTree">
+                    <string id="fileName">Mod_AquaticAssault_GoToNextWaypoint</string>
+                    <string id="Minimized">yes</string>
+                </action>
+                <action id="selectDestWaypoint">
+                    <string id="name"></string>
+                    <string id="team" values="ownenemy">ENEMY_TEAM</string>
+                    <string id="Comment">Remove my destination waypoint</string>
+                </action>
+            </normal>
+        </root>
+    </behaviour>
+</enemy>
