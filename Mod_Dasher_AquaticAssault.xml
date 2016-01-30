@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <enemy>
     <behaviour>
-        <root x="110" y="40">
+        <root x="80" y="20">
             <normal>
                 <action id="executeBehaviourTree">
                     <string id="fileName">Dasher</string>
@@ -28,9 +28,7 @@
                 <orblock>
                     <string id="Comment">Dash to escape</string>
                     <normal>
-                        <condition id="getBoolEquals">
-                            <string id="id">CanUseSkills</string>
-                            <string id="value" values="yesno">yes</string>
+                        <andblock>
                             <normal>
                                 <condition id="isInNamedArea">
                                     <string id="area name">HEALAREA</string>
@@ -51,6 +49,7 @@
                                             <float id="height">0.40</float>
                                             <string id="check line of sight" values="yesno">no</string>
                                             <string id="ignore invisibility" values="yesno">no</string>
+                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                             <string id="Comment">I would rather not dash to my death</string>
                                             <normal>
                                                 <condition id="getBoolEquals">
@@ -110,7 +109,16 @@
                                     </else>
                                 </condition>
                             </normal>
-                        </condition>
+                            <or>
+                                <condition id="getBoolEquals">
+                                    <string id="id">CanUseSkills</string>
+                                    <string id="value" values="yesno">yes</string>
+                                </condition>
+                                <condition id="isSkillOnButtonAvailable">
+                                    <string id="button" values="buttons">FACE_RIGHT</string>
+                                </condition>
+                            </or>
+                        </andblock>
                     </normal>
                     <else>
                         <condition id="isUpgradeEnabled">
@@ -176,6 +184,7 @@
                                                                     <float id="height">0.16</float>
                                                                     <string id="check line of sight" values="yesno">no</string>
                                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                     <normal>
                                                                         <condition id="isNextWaypointPosition">
                                                                             <string id="position" values="offsetposition">BELOW</string>
@@ -203,6 +212,7 @@
                                                                     <float id="height">0.10</float>
                                                                     <string id="check line of sight" values="yesno">no</string>
                                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                     <string id="Comment">Check for enemies and neutrals</string>
                                                                 </condition>
                                                                 <condition id="isInArea">
@@ -218,6 +228,7 @@
                                                                     <float id="height">0.10</float>
                                                                     <string id="check line of sight" values="yesno">no</string>
                                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                     <string id="Comment">Check for obstacles</string>
                                                                 </condition>
                                                             </or>
@@ -285,6 +296,7 @@
                                                     <float id="height">0.50</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                     <string id="Comment">Shorter range for triangle dash</string>
                                                     <normal>
                                                         <andblock>
@@ -349,6 +361,7 @@
                                                                     <float id="height">0.80</float>
                                                                     <string id="check line of sight" values="yesno">yes</string>
                                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                 </condition>
                                                                 <condition id="checkCharacterValue">
                                                                     <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
@@ -395,6 +408,7 @@
                                                     <float id="height">0.30</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                 </condition>
                                                 <condition id="getBoolEquals">
                                                     <string id="id">CanUseSkills</string>
@@ -472,6 +486,7 @@
                                                     <float id="height">0.48</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                 </condition>
                                             </or>
                                         </andblock>
@@ -515,6 +530,7 @@
                                                     <float id="height">0.30</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                 </condition>
                                                 <condition id="getBoolEquals">
                                                     <string id="id">CanUseSkills</string>
@@ -539,6 +555,7 @@
                                                     <float id="height">0.10</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">yes</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                 </condition>
                                                 <condition id="isSkillOnButtonAvailable">
                                                     <string id="button" values="buttons">FACE_LEFT</string>
@@ -615,6 +632,7 @@
                                                             <float id="height">0.48</float>
                                                             <string id="check line of sight" values="yesno">yes</string>
                                                             <string id="ignore invisibility" values="yesno">yes</string>
+                                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                         </condition>
                                                     </or>
                                                 </andblock>
@@ -669,6 +687,7 @@
                                                             <float id="height">0.48</float>
                                                             <string id="check line of sight" values="yesno">yes</string>
                                                             <string id="ignore invisibility" values="yesno">no</string>
+                                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                         </condition>
                                                         <condition id="isSkillOnButtonAvailable">
                                                             <string id="button" values="buttons">FACE_LEFT</string>
@@ -787,6 +806,7 @@
                             <string id="distance check" values="distance check">NONE</string>
                             <string id="check line of sight" values="yesno">no</string>
                             <string id="ignore invisibility" values="yesno">no</string>
+                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                         </action>
                         <action id="aimStickAtTarget">
                             <float id="duration seconds">0.10</float>
@@ -823,6 +843,8 @@
                             <float id="width">1.00</float>
                             <float id="height">1.00</float>
                             <string id="check line of sight" values="yesno">no</string>
+                            <string id="ignore invisibility" values="yesno">no</string>
+                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                         </condition>
                         <condition id="checkCharacterValue">
                             <string id="property" values="charactervaluesCheckable">health minus dot percentage</string>
@@ -850,6 +872,7 @@
                             <float id="height">0.48</float>
                             <string id="check line of sight" values="yesno">yes</string>
                             <string id="ignore invisibility" values="yesno">no</string>
+                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                             <normal>
                                 <action id="setBool">
                                     <string id="id">moveTowardsTarget</string>
@@ -863,6 +886,7 @@
                                     <float id="height">0.08</float>
                                     <string id="check line of sight" values="yesno">yes</string>
                                     <string id="ignore invisibility" values="yesno">no</string>
+                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                     <normal>
                                         <action id="setBool">
                                             <string id="id">moveAwayFromTarget</string>
@@ -952,6 +976,7 @@
                                             <float id="height">0.05</float>
                                             <string id="check line of sight" values="yesno">no</string>
                                             <string id="ignore invisibility" values="yesno">yes</string>
+                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                             <string id="Comment">check walls</string>
                                         </condition>
                                         <condition id="isTargetPosition">
@@ -1020,6 +1045,7 @@
                                                     <float id="height">0.06</float>
                                                     <string id="check line of sight" values="yesno">yes</string>
                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                     <string id="Comment">greens</string>
                                                     <normal>
                                                         <action id="setBool">
@@ -1075,6 +1101,7 @@
                                                                     <float id="height">0.05</float>
                                                                     <string id="check line of sight" values="yesno">no</string>
                                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                     <string id="Comment">check walls</string>
                                                                 </condition>
                                                                 <condition id="isInArea">
@@ -1090,6 +1117,7 @@
                                                                     <float id="height">0.02</float>
                                                                     <string id="check line of sight" values="yesno">no</string>
                                                                     <string id="ignore invisibility" values="yesno">no</string>
+                                                                    <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                     <string id="Comment">check creeps</string>
                                                                 </condition>
                                                                 <condition id="isNextWaypointPosition">
@@ -1360,6 +1388,7 @@
                                                                             <float id="height">0.02</float>
                                                                             <string id="check line of sight" values="yesno">no</string>
                                                                             <string id="ignore invisibility" values="yesno">no</string>
+                                                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                             <string id="Comment">check walls</string>
                                                                             <normal>
                                                                                 <condition id="random">
@@ -1392,6 +1421,7 @@
                                                                             <float id="height">0.02</float>
                                                                             <string id="check line of sight" values="yesno">no</string>
                                                                             <string id="ignore invisibility" values="yesno">no</string>
+                                                                            <string id="never detect invisible targets without character collision" values="yesno">no</string>
                                                                             <string id="Comment">check enemies</string>
                                                                             <normal>
                                                                                 <action id="setBool">
